@@ -14,8 +14,7 @@ fn main() {
 }
 
 fn app(cx: Scope) -> Element {
-    render!(
-        h1 { "Hello, world!" }
+    cx.render(rsx!(
         div {
             id: "map",
             style: r#"
@@ -25,35 +24,31 @@ fn app(cx: Scope) -> Element {
         }
         script {
             r#"
-                initMap();
+                ymaps.ready(init);
+                function init(){{
+                    // Создание карты.
+                    var myMap = new ymaps.Map("map", {{
+                        // Координаты центра карты.
+                        // Порядок по умолчанию: «широта, долгота».
+                        // Чтобы не определять координаты центра карты вручную,
+                        // воспользуйтесь инструментом Определение координат.
+                        center: [55.76, 37.64],
+                        // Уровень масштабирования. Допустимые значения:
+                        // от 0 (весь мир) до 19.
+                        zoom: 7
+                    }});
 
-                async function initMap() {{
-                    // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
-                    await ymaps3.ready;
-
-                    const {{YMap, YMapDefaultSchemeLayer}} = ymaps3;
-
-                    // Иницилиазируем карту
-                    const map = new YMap(
-                        // Передаём ссылку на HTMLElement контейнера
-                        document.getElementById('map'),
-
-                        // Передаём параметры инициализации карты
-                        {{
-                            location: {{
-                                // Координаты центра карты
-                                center: [37.588144, 55.733842],
-
-                                // Уровень масштабирования
-                                zoom: 10
-                            }}
-                        }}
-                    );
-
-                    // Добавляем слой для отображения схематической карты
-                    map.addChild(new YMapDefaultSchemeLayer());
+                    // Добваляем метки на клик по карте
+                    myMap.events.add('click', function (e) {{
+                        var coords = e.get('coords');
+                        myMap.geoObjects.removeAll();
+                        myMap.geoObjects.add(new ymaps.Placemark(coords, {{
+                            preset: 'islands#icon',
+                            iconColor: '#0095b6'
+                        }}));
+                    }});
                 }}
             "#
         }
-    )
+    ))
 }
