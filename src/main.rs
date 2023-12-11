@@ -1,3 +1,4 @@
+#![windows_subsystem = "windows"]
 use dioxus::prelude::*;
 
 #[cfg(target_arch = "wasm32")]

@@ -13,3 +13,12 @@ dioxus-web = "0.4.3"
 
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 dioxus-desktop = "0.4.3"
+
+[profile.release]
+opt-level = "z"
+debug = false
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+incremental = false
