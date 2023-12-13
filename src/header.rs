@@ -3,30 +3,22 @@ use crate::asset;
 
 use dioxus::html::{section, style, a};
 
-pub fn header_fun(cx: Scope) -> Element {
+#[component]
+pub fn Header(cx: Scope) -> Element {
     cx.render( rsx!(
-        style {include_str!("web/css/header-styles.css") }
-        section {
-            id: "header",
-            div {
-                id: "service-name-container",
-                h1{
-                    id: "service-name",
-                    "TRIP DRIP"
-                }
-            },
+        style { include_str!("web/css/header-styles.css") }
+        section { id: "header",
+            div { id: "service-name-container", h1 { id: "service-name", "TRIP DRIP" } }
 
-            div {
-                class: "profile-container",
-                profile(cx, false, 3.5)
-            }
+            div { class: "profile-container", Profile { logged: false, size: 3.5 } }
         }
     ))
 }
 
-pub fn profile(cx: Scope, logged: bool, size: f32) -> Element {
+#[component]
+pub fn Profile(cx: Scope, logged: bool, size: f32) -> Element {
     cx.render( rsx!(
-        if logged{ rsx! {
+        if *logged{ rsx! {
             img {
                 class: "profile-image",
                 style: "height: {size*2.0}vh",
