@@ -36,6 +36,7 @@ a {
     outline: none;
     text-decoration: none;
     padding: 2vh;
+    font-size: 1.5vh;
     display: table-cell;
     vertical-align: middle;
 }
@@ -45,5 +46,22 @@ a {
     margin-right: 5%;
     height: auto;
     display: table;
+    vertical-align: middle;
+}
+
+.profile-image{
+    height: 7vh;
+    width: auto;
+    border-radius: 100%;
+}
+
+.user-name-container{
+    margin: auto auto auto 1.2%;
+    display: table;
+    vertical-align: middle;
+}
+.user-name{
+    font-size: 3.5vh;
+    display: table-cell;
     vertical-align: middle;
 }

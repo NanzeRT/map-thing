@@ -10,7 +10,7 @@ default_platform = "desktop"
 out_dir = "dist"
 
 # The static resource path
-asset_dir = "public"
+asset_dir = "src/web"
 
 [web.app]
 

@@ -1,4 +1,5 @@
 use dioxus::prelude::*;
+use crate::asset;
 
 use dioxus::html::{section, style, a};
 
@@ -14,42 +15,48 @@ pub fn header_fun(cx: Scope) -> Element {
                     "TRIP DRIP"
                 }
             },
-            profile(cx)
+
+            div {
+                class: "profile-container",
+                profile(cx, false, 3.5)
+            }
         }
     ))
 }
 
-fn profile(cx: Scope) -> Element {
+pub fn profile(cx: Scope, logged: bool, size: f32) -> Element {
     cx.render( rsx!(
-        div {
-            class: "profile-container",
-            if true{ rsx! {
-                a {
-                    id: "registration",
-                    href: "#",
-                    "Registration"
+        if logged{ rsx! {
+            img {
+                class: "profile-image",
+                style: "height: {size*2.0}vh",
+                src:
+                if true{
+                    asset!("/images/default_profile.png")
+                } else {
+                    "lol"
                 },
-                a {
-                    id: "login",
-                    href: "#",
-                    "Login"
-                }
-            }}else{ rsx! {
+                alt: "profile image"
+            }
+            div {
+                class: "user-name-container",
                 p {
-                    id: "user-name",
+                    class: "user-name",
+                    style: "height: {size}vh",
                     "Name"
                 }
-                img {
-                    class: "profile-image",
-                    src:
-                    if true{
-                        "src/web/images/star.png"
-                    } else {
-                        ""
-                    },
-                    alt: "profile image"
-                }
-            }}
-        }
+            }
+        }}else{ rsx! {
+            a {
+                id: "registration",
+                href: "#",
+                "Registration"
+            },
+            a {
+                id: "login",
+                href: "#",
+                "Login"
+            }
+        }}
     ))
 }

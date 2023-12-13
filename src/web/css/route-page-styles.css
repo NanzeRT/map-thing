@@ -1,4 +1,81 @@
 #map{
-    width: 100%;
-    height: 500px;
+    width: 80%;
+    margin: auto;
+    height: 50vh;
+}
+
+.left-right-container{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+}
+.row-container{
+    margin-left: auto;
+    margin-right: 0;
+    height: auto;
+    display: table;
+    vertical-align: middle;
+}
+.row-element{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.route-name-container{
+    margin: 1.5vh auto 1.5vh 0;
+    font-size: 7vh;
+}
+#route-page-name{
+    margin: 0;
+    font-size: 3vh;
+}
+.stars-img{
+    height: 2.5vh;
+    width: auto;
+}
+
+
+.autor-name-container{
+    margin: 1.5vh auto 1.5vh auto;
+    width: 80%;
+    height: auto;
+    font-size: 4vh;
+}
+
+.tag{
+    margin: 0 0 0 1%;
+    min-width: 40px;
+}
+.tag-text{
+    background-color: rgba(222, 50, 89, 0.49);
+    margin: 2vh 5% 2vh auto;
+    border: 1px solid rgba(222, 50, 89, 0.22);
+    border-radius: 2px;
+    width: 7ch;
+    text-align: center;
+    font-size: 2.2vh;
+}
+
+#description-container{
+    margin: 2vh auto 2vh auto;
+    width: 80%;
+}
+#description{
+    width: 75%;
+}
+
+
+
+#comments{
+    width: 65%;
+    margin: 2vh 25% 2vh 10%;
+}
+.comment-container{
+    border: 1px solid rgba(225, 206, 206, 0.22);
+    border-radius: 2px;
+    margin: 2vh 0 2vh 0;
+}
+.comment-text{
+    font-size: 16px;
 }
